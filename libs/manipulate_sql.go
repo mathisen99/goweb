@@ -173,11 +173,11 @@ func GetPassword4User(db *sql.DB, username string) (string, string) {
 	defer rows.Close()
 
 	// Reading the only row and saving the returned user
-	rows.Next()
-	err = rows.Scan(&expected_user.ID, &expected_user.Username, &expected_user.Password, &expected_user.Email, &expected_user.CreatedAt)
+
+	QueryRow := db.QueryRow("select id,username,passwrd,email,created_at from user where username = ?", username)
+	err = QueryRow.Scan(&expected_user.ID, &expected_user.Username, &expected_user.Password, &expected_user.Email, &expected_user.CreatedAt)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return "", "401 UNAUTHORIZED: USER NOT FOUND"
+		return "", "No such user exists"
 	}
 
 	return expected_user.Password, "200 OK"
