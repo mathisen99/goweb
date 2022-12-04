@@ -16,10 +16,12 @@
                 <div class="header-column-2">
                     {{if eq .Username ""}}
                         <div class="login">
-                            <form method="POST" action="/">
-                                <input type="text" id="uname" name="uname" placeholder="Username" size="10" />
-                                <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Password" size="10" />
-                                <input type="submit" value="LOGIN" />
+                            <form id="form_id" method="post" name="myform">
+                                <label>User Name :</label>
+                                <input type="text" name="username" id="username"/>
+                                <label>Password :</label>
+                                <input type="password" name="password" id="password"/>
+                                <input type="button" value="Login" id="submit" onclick="validate()"/>
                             </form>
                         </div>
                         <div class="register">
