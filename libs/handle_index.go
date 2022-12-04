@@ -105,17 +105,9 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		hashed_pass_expected, err := HashPassword(expected_pass)
-		if err != nil {
-			renderError(w, "500 INTERNAL SERVER ERROR: HASHING PASSWORD FAILED")
-			return
-		}
-		if debug == true {
-			fmt.Println(green, "Server -> hashed_pass_expected: ", hashed_pass_expected, reset)
-			fmt.Println(green, "Server -> hashed_pass: ", hashed_pass, reset)
-			fmt.Println(green, "Server -> expected_pass: ", expected_pass, reset)
-			fmt.Println(green, "Server -> password: ", password, reset)
-			fmt.Println(red, "Server -> Need to fix this so both generate same hash", reset)
+		if CheckPasswordHash(hashed_pass, expected_pass) {
+			fmt.Println(green, "Server -> Password is correct", reset)
+			fmt.Println(green, "Server -> User", username, "successfully logged in", reset)
 		}
 
 		// Checking if the given password is different than the expected one
