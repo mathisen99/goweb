@@ -9,6 +9,13 @@ import (
 	"text/template"
 )
 
+var debug = true
+
+// colors for debug prints
+const green = "\033[32m"
+const red = "\033[31m"
+const reset = "\033[0m"
+
 // Initializing a global variable templ with all the necessary pages
 var templ = template.Must(template.ParseFiles("templates/index.html"))
 var username = ""
@@ -90,6 +97,25 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 		if strings.Compare(mess, "200 OK") != 0 {
 			renderError(w, mess)
 			return
+		}
+
+		hashed_pass, err := HashPassword(password)
+		if err != nil {
+			renderError(w, "500 INTERNAL SERVER ERROR: HASHING PASSWORD FAILED")
+			return
+		}
+
+		hashed_pass_expected, err := HashPassword(expected_pass)
+		if err != nil {
+			renderError(w, "500 INTERNAL SERVER ERROR: HASHING PASSWORD FAILED")
+			return
+		}
+		if debug == true {
+			fmt.Println(green, "Server -> hashed_pass_expected: ", hashed_pass_expected, reset)
+			fmt.Println(green, "Server -> hashed_pass: ", hashed_pass, reset)
+			fmt.Println(green, "Server -> expected_pass: ", expected_pass, reset)
+			fmt.Println(green, "Server -> password: ", password, reset)
+			fmt.Println(red, "Server -> Need to fix this so both generate same hash", reset)
 		}
 
 		// Checking if the given password is different than the expected one
