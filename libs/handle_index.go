@@ -16,7 +16,7 @@ const red = "\033[31m"
 const reset = "\033[0m"
 
 // Initializing a global variable templ with all the necessary pages
-var templ = template.Must(template.ParseFiles("templates/index.html"))
+var templ = template.Must(template.ParseFiles("templates/forums.html"))
 var username = ""
 
 // Calling HandleWelcome function whenever there is a request to the welcome URL
@@ -104,8 +104,8 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 			renderError(w, "500 INTERNAL SERVER ERROR: HASHING PASSWORD FAILED")
 			return
 		}
-
-		fmt.Println(yellow, "Server -> Login atempt! Client: ", username, " ", hashed_pass, reset)
+		//fix hashed password to be in use here.. first add a register function
+		fmt.Println(yellow, "Server -> Login atempt!", username, " ", hashed_pass, reset)
 		if CheckPasswordHash(hashed_pass, expected_pass) {
 			fmt.Println(green, "Server -> Password is correct", reset)
 			fmt.Println(green, "Server -> User", username, "successfully logged in", reset)
@@ -198,7 +198,7 @@ func renderError(w http.ResponseWriter, message string) {
 
 // Executing the index.html page and handling errors in case of failure
 func executeIndex(w http.ResponseWriter, index_page *IndexPage) {
-	err := templ.ExecuteTemplate(w, "index.html", index_page)
+	err := templ.ExecuteTemplate(w, "forums.html", index_page)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		http.Error(w, "500 INTERNAL SERVER ERROR: PAGE CORRUPTED", http.StatusInternalServerError)

@@ -14,7 +14,6 @@ var sessions = make(map[string]Session)
 
 // Setting the client cookie with a generated session token
 func SetClientCookieWithSessionToken(w http.ResponseWriter, username, password string) string {
-	fmt.Println("Setting the client cookie with a generated session token")
 	// Creating a random session token and an expired time (1 minute from the current time)
 	u2, err := uuid.NewV4()
 	if err != nil {
@@ -29,7 +28,7 @@ func SetClientCookieWithSessionToken(w http.ResponseWriter, username, password s
 
 	// Setting the cookie of the current client with the above-generated session token and expired time
 	http.SetCookie(w, &http.Cookie{Name: "session_token", Value: session_token, Expires: expired_time})
-	fmt.Println("debug: session_token =", session_token)
+	fmt.Println(green, "Server -> Session_token set =", session_token, reset)
 
 	return "200 OK"
 }
