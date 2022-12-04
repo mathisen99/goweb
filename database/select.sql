@@ -1,10 +1,3 @@
-SELECT
-    id,
-    username,
-    email,
-    created_at
-FROM
-    user
-ORDER BY
-    username DESC
-LIMIT 10;
+SELECT * FROM user ORDER BY username DESC LIMIT 10;
+SELECT * FROM category ORDER BY category_name DESC LIMIT 10;
+SELECT * FROM post ORDER BY title DESC LIMIT 10;
