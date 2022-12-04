@@ -96,6 +96,7 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 		expected_pass, mess := GetPassword4User(db, username)
 		if strings.Compare(mess, "200 OK") != 0 {
 			renderError(w, mess)
+			fmt.Println(red, "Server -> ERROR: ", mess, reset)
 			return
 		}
 
@@ -105,6 +106,7 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		fmt.Println(green, "Server -> Login! Client: ", username, " ", hashed_pass, reset)
 		if CheckPasswordHash(hashed_pass, expected_pass) {
 			fmt.Println(green, "Server -> Password is correct", reset)
 			fmt.Println(green, "Server -> User", username, "successfully logged in", reset)
