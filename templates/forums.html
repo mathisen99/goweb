@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathisen's Forum</title>
+    <script src="../js/login.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -26,20 +27,27 @@
             <div class="brand">Mathisen's Test Forum</div>
         </div>
         <!--SearchBox Section-->
-
+            <div id="content" style="display: flex; align-items: center; justify-content: center;margin-top:10px;visibility: hidden">
+                <label for="user-email" style="margin-right: 10px">User email:</label>
+                <input id="user-email" class="input" type="email" placeholder="input your email">
+                <label for="user-password" style="margin-right: 10px;margin-left: 30px">User password:</label>
+                <input id="user-password" class="input" type="password" placeholder="input your password">
+                <button id="user-login-button" class="button-default" style="margin-left: 30px">Login</button>
+            </div>
+        
     </header>
     <div class="container">
         <div class="subforum">
             <div class="subforum-title">
-                <h1>Security</h1>
+                <h1>General Information</h1>
             </div>
             <div class="subforum-row">
                 <div class="subforum-icon subforum-column center">
                     <i class="fa fa-car center"></i>
                 </div>
                 <div class="subforum-description subforum-column">
-                    <h4><a href="#">Malware</a></h4>
-                    <p>some cool malware info</p>
+                    <h4><a href="#">Description Title</a></h4>
+                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
                 </div>
                 <div class="subforum-stats subforum-column center">
                     <span>24 Posts | 12 Topics</span>
@@ -230,7 +238,7 @@
     </div>
 
     <footer>
-        <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
+        <span>&copy;  Tommy Mathisen | All Rights Reserved</span>
     </footer>
     <script src="js/main.js"></script>
 </body>

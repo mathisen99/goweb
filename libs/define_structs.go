@@ -67,3 +67,14 @@ type IndexPage struct {
 	LastPosts     map[Category]Post
 	CreatingUsers map[Post]User
 }
+
+type VerifyUserInput struct {
+	Username           string
+	Password           string
+	UserSessionStorage string
+}
+type VerifyUserOutput struct {
+	Result       string
+	Content      string
+	SessionLogin string
+}

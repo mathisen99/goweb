@@ -2,6 +2,7 @@ package forum
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -79,6 +80,9 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "POST":
+		var data VerifyUserInput
+		json.NewDecoder(r.Body).Decode(&data)
+		fmt.Println(green, "Server -> Decoding json data from login form:", data, reset)
 
 		// Trying to parse the login form and handling errors in case of failure
 		err := r.ParseForm()
@@ -88,8 +92,12 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// Getting the credentials (given by the user) from the login form
-		username = r.FormValue("uname")
-		password := r.FormValue("pwd")
+		/* 	username = r.FormValue("uname")
+		password := r.FormValue("pwd") */
+		username = data.Username
+		password := data.Password
+
+		fmt.Println("Server -> Verifying user " + username + ":" + password)
 
 		// Getting the password of the given user from the database
 		expected_pass, mess := GetPassword4User(db, username)
