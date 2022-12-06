@@ -1,4 +1,4 @@
-{{define "content"}}
+{{define "login"}}
 <div class="container">
 <div class="header-row">
     <div class="header-column">
@@ -29,6 +29,56 @@
 </div>
 </div>
 {{end}}
-{{define "block"}}
+{{define "base"}}
+<div class="path-row"></div>
+<div id="path" class="path description"><small><i class="bi bi-house-door"></i> <a href="/" id="path">HOME</a></small></div>
+<br />
+    <div class="post-button">
+        <form action="">
+            <input type="submit" value="ADD POST">
+        </form>
+    </div>
+    <div class="category-minirow description">
+        <div class="category-minicolumn"><small></small></div>
+        <div class="category-minicolumn"><small>CATEGORY</small></div>
+        <div class="category-minicolumn"><small></small></div>
+        <div class="category-minicolumn priority-4"><small>LAST POST</small></div>
+    </div>
+        <div class="category-row">
+            <div class="category-icon category-column center">
+                <i class="bi bi-window"></i>
+            </div>
+            <div class="category-description category-column">
+                <div class="title category-margin"><a href="">Name</a><br></div>
+                <div class="description"><small>Description of the category is written here</small></div>
+            </div>
+            <div class="category-stats category-column center priority-3">
+                <span>99</span>
+            </div>
+            
+            <div class="category-info category-column left priority-4">
+                <span><a href="">title</a><br>by <a href="">name</a> at <small>date</small></span>
+            </div>
+        </div>
 
+</div>
 {{end}}
+{{define "more"}}
+<div class="category-row">
+    <div class="category-icon category-column center">
+        <i class="bi bi-window"></i>
+    </div>
+    <div class="category-description category-column">
+        <div class="title category-margin"><a href="">Name</a><br></div>
+        <div class="description"><small>Description of the category is written here</small></div>
+    </div>
+    <div class="category-stats category-column center priority-3">
+        <span>99</span>
+    </div>
+    
+    <div class="category-info category-column left priority-4">
+        <span><a href="">title</a><br>by <a href="">name</a> at <small>date</small></span>
+    </div>
+</div>
+{{end}}
+
