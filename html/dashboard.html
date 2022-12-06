@@ -1,0 +1,37 @@
+{{define "content"}}
+<p>{{.Message}}
+    {{.User}}
+</p>
+<div class="header-row">
+    <div class="header-column">
+        <div class="title2">FORUM</div>
+    </div>
+
+        <div class="header-column-2">
+
+                <div class="login">
+                    <form method="POST" action="/login">
+                        <input type="text" id="uname" name="uname" placeholder="Username" size="10" />
+                        <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Password" size="10" />
+                        <input type="submit" value="LOGIN" />
+                  
+                            <h5 style="color:whitesmoke">{{.ErrorMessage}}</h5>
+
+                    </form>
+                </div>
+                <div class="register">
+                    <i class="bi bi-gear"><a href="/registration">REGISTER</a></i>
+                </div>
+
+                <h5 style="color:whitesmoke">WELCOME {{.Username}}</h5>
+                <div class="login">
+                    <form method="POST" action="/logout">
+                        <input type="submit" value="LOGOUT" />
+                    </form>
+                </div>
+
+        </div>
+
+    <br />
+</div>
+{{end}}
