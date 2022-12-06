@@ -19,6 +19,7 @@ type DashboardParams struct {
 	Title   string
 	Message string
 	User    string
+	LogedIn bool
 }
 
 func Dashboard(w io.Writer, p DashboardParams) error {

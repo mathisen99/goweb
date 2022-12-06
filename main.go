@@ -11,7 +11,7 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", css))
 
 	//pages
-	http.HandleFunc("/dashboard", lib.Dashboard)
+	http.HandleFunc("/", lib.Dashboard)
 	http.HandleFunc("/profile/show", lib.ProfileShow)
 	http.HandleFunc("/profile/edit", lib.ProfileEdit)
 	//lISTEN

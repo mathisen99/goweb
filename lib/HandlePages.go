@@ -10,6 +10,7 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		Title:   "Forum Re-make",
 		Message: "Welcome to the forum",
 		User:    "Mr Test",
+		LogedIn: true,
 	}
 	html.Dashboard(w, p)
 }
