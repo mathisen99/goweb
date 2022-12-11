@@ -1,0 +1,89 @@
+{{template "header" .}}
+      <br /><br />
+      <div class="path-row"></div>
+      <div id="path" class="path description">
+        <small
+          ><i class="bi bi-house-door"></i>
+          <a href="/" id="path">HOME</a></small
+        >
+      </div>
+      <br />
+      {{if not (eq .Username "")}}
+        {{if eq (GetUserPrivilege .Username) 5}}
+        <div class="post-button buttons-row">
+          <form method="GET" action="/new_user">
+            <input type="submit" value="ADD USER" />
+          </form>
+        </div>
+        {{end}}
+        {{end}}
+        {{if not (eq .Username "")}}
+        {{if eq (GetUserPrivilege .Username) 5}}
+        <div class="post-button buttons-row">
+          <form method="post" action="/change_theme">
+            <select name="theme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            <input type="submit" value="change_theme" />
+          </form>
+        </div>
+        {{end}}
+        {{if not (eq (GetUserPrivilege .Username) 1)}}
+        <div class="post-button buttons-row">
+          <form method="GET" action="/new_category">
+            <input type="submit" value="ADD CATEGORY" />
+          </form>
+        </div>
+        {{end}}
+        <div class="post-button">
+          <form method="GET" action="/new_post">
+            <input type="submit" value="ADD POST" />
+          </form>
+        </div>
+      {{end}}
+      <div class="category-minirow description">
+        <div class="category-minicolumn"><small></small></div>
+        <div class="category-minicolumn"><small>CATEGORY</small></div>
+        <div class="category-minicolumn"><small></small></div>
+        <div class="category-minicolumn priority-4">
+          <small>LAST POST</small>
+        </div>
+      </div>
+      {{$PostsNumbers := .PostsNumbers}} {{$LastPosts := .LastPosts}}
+      {{$CreatingUsers := .CreatingUsers}} {{range .Categories}}
+      <div class="category-row">
+        <div class="category-icon category-column center">
+          <i class="bi bi-window"></i>
+        </div>
+        <div class="category-description category-column">
+          <div class="title category-margin">
+            <a href="/category/{{.ID}}">{{.CategoryName}}</a><br />
+          </div>
+          <div class="description">
+            <small>{{.Description}}</small>
+          </div>
+        </div>
+        <div class="category-stats category-column center priority-3">
+          <span>{{index $PostsNumbers .}} Posts</span>
+        </div>
+        {{$LastPost := (index $LastPosts .)}}
+        <div class="category-info category-column left priority-4">
+          <span
+            ><a href="{{with $LastPost}}{{.URL}}{{end}}"
+              >{{with $LastPost}}{{.Title}}{{end}}</a
+            ><br />by
+            <a href=""
+              >{{with (index $CreatingUsers $LastPost)}}{{.Username}}{{end}}</a
+            >
+            at <small>{{with $LastPost}}{{.CreatedAt}}{{end}}</small></span
+          >
+        </div>
+      </div> {{end}}
+    </div>
+    <div class="footer">
+      <div class="category-icon category-column center">
+        {{template "footer" .}}
+      </div>
+
+  </body>
+</html>

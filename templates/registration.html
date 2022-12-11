@@ -1,0 +1,76 @@
+{{template "header" .}}
+      <br /><br />
+      <div id="path" class="path description">
+        <small
+          ><i class="bi bi-house-door"></i> <a href="/" id="path">HOME</a>
+          <i class="bi bi-arrow-right"></i> <i class="bi bi-person-square"></i>
+          <a href="" id="path">REGISTRATION</a></small
+        >
+      </div>
+      <br />
+      <div class="registration-row">
+        <div class="registration-column-1">
+          <div class="registration-text">
+            <form id="user-registration" method="POST" action="/registration">
+              <p>
+                <label for="id_title">User name: </label>
+                <input
+                  id="username"
+                  type="text"
+                  class="input-text"
+                  name="username"
+                />
+                {{if eq .UserErrorMessage "User already exist"}}
+                <span class="red">User already exists!</span>
+                {{else if eq .UserErrorMessage "Username invalid"}}
+                <span class="red"
+                  >Username must be 4 - 10 characters, and include no special
+                  characters</span
+                >
+                {{end}}
+              </p>
+              <p>
+                <label for="id_title">User email: </label>
+                <input id="email" type="text" class="input-text" name="email" />
+                {{if eq .EmailErrorMessage "Incorrectly given email"}}
+                <span class="red">Email address incorrect!</span>
+                {{else if eq .EmailErrorMessage "Email already used"}}
+                <span class="red">Email address already used</span>
+                {{end}}
+              </p>
+              <p>
+                <label for="id_title">Password: </label>
+                <input
+                  id="password"
+                  type="password"
+                  class="input-text"
+                  name="password"
+                />
+                {{if eq .PasswordErrorMessage "Password invalid"}}
+                <span class="red"
+                  >Password must be 8-20 characters long and include at least
+                  one uppercase- and lowercase letter, and one number. No
+                  special characters allowed</span
+                >
+                {{end}}
+              </p>
+              <p>
+                <label for="id_title">Repeat your password: </label>
+                <input
+                  id="repassword"
+                  type="password"
+                  class="input-text"
+                  name="repassword"
+                />
+                {{if eq .PasswordErrorMessage "Passwords doesn't match"}}
+                <span class="red">Passwords doesn't match!</span>
+                {{end}}
+              </p>
+              <p><input type="submit" value="REGISTER!" /></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

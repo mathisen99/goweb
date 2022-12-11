@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"/>
+  </head>
+  <body>
+      <div class="category-row">
+        <div class="category-icon category-column center">
+          <i class="bi bi-window"></i>
+        </div>
+        <div class="category-description category-column">
+            <label>Uppload Avatar maybe?</label>
+            <p style="font-size: 12px;">Currently can uppload jpg and png files only!</p>
+            <p style="font-size: 12px;">Current file max size is 10mb to big?</p>
+          <div class="title category-margin">
+            <form
+                enctype="multipart/form-data"
+                action="http://localhost:8080/upload"
+                method="post">
+                <input type="file" name="File" />
+                <input type="submit" value="upload" />
+            </form><br/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

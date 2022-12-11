@@ -1,0 +1,59 @@
+{{define "header"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-row">
+        <div class="header-column">
+          <div class="title2">FORUM</div>
+        </div>
+        <div class="header-column-2">
+          {{if not (eq .Username .ErrorMessage)}}
+          <div class="login">
+            <form method="POST" action="/login">
+              <input
+                type="text"
+                id="uname"
+                name="uname"
+                placeholder="Username"
+                size="10"
+              />
+              <input
+                type="password"
+                id="pwd"
+                name="pwd"
+                minlength="8"
+                placeholder="Password"
+                size="10"
+              />
+              <input type="submit" value="LOGIN" />
+              {{if HasErrorCode .ErrorMessage "401 "}}
+              <h5 class="white">{{.ErrorMessage}}</h5>
+              {{end}}
+            </form>
+          </div>
+          <div class="register">
+            <i class="bi bi-gear"><a href="/registration">REGISTER</a></i>
+          </div>
+          {{else}}
+          <h5 class="white">WELCOME <a href="/user/{{.Username}}">{{.Username}}</a></h5>
+          <div class="login">
+            <form method="POST" action="/logout">
+              <input type="submit" value="LOGOUT" />
+            </form>
+          </div>
+          {{end}}
+        </div>
+        <br />
+      </div>
+{{end}}

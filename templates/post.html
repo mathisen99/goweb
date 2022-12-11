@@ -1,0 +1,67 @@
+{{template "header" .}}
+        <br><br>
+        {{$Title := .PostInfo.Title}}
+        <div id="path" class="path description"><small>
+            <i class="bi bi-house-door"></i> <a href="/">HOME</a>
+            <i class="bi bi-arrow-right"></i> <a href="">{{$Title}}</a></small>
+        </div><br>
+        <div class="category-minirow-post description">
+            <div class="category-minicolumn-post"><small>&nbsp<i class="bi bi-file-earmark-text"></i>
+                {{.PostInfo.Date}} by <b>{{.PostInfo.UserName}}</b>
+            </small></div>
+        </div>
+        <div class="post-column">
+        <div class="post-text">
+            <h1 class="h2">{{.PostInfo.Title}}</h1>
+            {{.PostInfo.Content}}
+            <div class="likes">
+                <div class="thumb js-like-count">
+                    <div class="js-like-error"></div>
+                    <i class="bi bi-hand-thumbs-up-fill js-like {{if .IsPostLiked}}liked{{end}}" data-postId="{{.PostInfo.ID}}"></i><div class="js-count">{{.PostInfo.LikedNumber}}</div></div>
+                &nbsp;
+                <div class="thumb js-like-count">
+                    <div class="js-like-error"></div>
+                    <i class="bi bi-hand-thumbs-down-fill js-dislike {{if .IsPostDisliked}} liked{{end}}"  data-postId="{{.PostInfo.ID}}"></i><div class="js-count">{{.PostInfo.DislikedNumber}}</div></div>
+            </div>
+        </div><br></div><br>
+
+        {{$CommentLike := .CommentLike}}
+        {{$CommentDislike := .CommentDislike}}
+        {{range .Comments}}
+        <div class="category-minirow-post description">
+            <div class="category-minicolumn-comment"><small>&nbsp<i class="bi bi-file-earmark-text"></i>
+                {{.Date}} by <b>{{.UserName}}</b>
+            </small></div>
+        </div>
+        <div class="reply-column">
+        <div class="reply-text">
+            <br><h3 class="h3">Re: {{$Title}}</h3>
+            {{.Content}}
+            <br><br>
+            <div class="likes">
+                
+                <div class="thumb js-like-count">
+                    <div class="js-like-error"></div>
+                    <i class="bi bi-hand-thumbs-up-fill js-comment-like {{if index $CommentLike .ID}}liked{{end}}" data-commentId="{{.ID}}"></i><div class="js-count">{{.LikedNumber}}</div></div>
+                &nbsp;
+                <div class="thumb js-like-count">
+                    <div class="js-like-error"></div>
+                    <i class="bi bi-hand-thumbs-down-fill js-comment-dislike {{if index $CommentDislike .ID}}liked{{end}}"  data-commentId="{{.ID}}"></i><div class="js-count">{{.DislikedNumber}}</div></div>
+                </div>
+        </div><br></div><br>
+        
+        {{end}}
+        {{if not (eq .Username .ErrorMessage)}}
+        <div class="comment">
+            <h2 class="comment-text"><br>Write a reply</h2><br>
+            <form method="POST">
+                <textarea id="comment" name="comment" class="comment-textarea" maxlength="2000"></textarea>
+                <div class="comment-send-button"><input type="submit" value="SEND"></div>
+            </form>
+        </div>
+        {{end}}
+    </div>
+</body>
+<script src="/js/like.js"></script>
+<script src="/js/multi.js"></script>
+</html>

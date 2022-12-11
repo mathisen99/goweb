@@ -7,6 +7,35 @@
     box-sizing: border-box;
 }
 
+.radio-button {
+        width: 300px;
+        text-align: center;      
+}
+      .radio-button input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+      }
+      .radio-button label {
+        color: #E9FAE3;
+        position:static;
+        display: inline-block;
+        background-color: #96A293;
+        font-family: sans-serif, Arial;
+        width: 32% !important;
+        border: 3px solid #C5E6A6;
+        -webkit-transition: 0.5s;
+         transition: 0.5s;
+         cursor: pointer;
+      }
+      .radio-button label:hover {
+        background-color: #8FAD88;
+      }
+      .radio-button input[type="radio"]:checked + label {
+        background-color: #8FAD88;
+        border-color: #666;
+      }
+
 html{
     font-size: 1.4;
     font-family: Arial, Helvetica, sans-serif;
@@ -55,6 +84,11 @@ a:hover{
     color: #CCE6F4
 }
 
+.buttons-row{
+    margin-right: 20px;
+    float: left;
+}
+
 .container{
     margin: 10px;
     padding: 10px;
@@ -65,9 +99,18 @@ a:hover{
 }
 
 .category-row{
-    height: 60px;
+    height: 80px;
     display: grid;
     grid-template: auto / 7% 40% 13% 40%
+}
+
+.footer{
+    background-color: #8FAD88;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 15px;
+    color: #030303;
 }
 
 .header-column-2{
@@ -89,6 +132,11 @@ a:hover{
     display: inline-block
 }
 
+#new-category label{
+    width: 125px;
+    display: inline-block
+}
+
 input[type=text], input[type=password]{
     padding: 6px 10px;
     background-color: #8FAD88;
@@ -98,7 +146,7 @@ input[type=text], input[type=password]{
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-    color: #E9FAE3
+    color: #E9FAE3;
 }
 
 input[type="text"]::placeholder, input[type="password"]::placeholder{
@@ -125,12 +173,15 @@ input[type=submit]:hover{
 }
 
 .post-column{
+    padding: 20px;
     margin: 0px;
     border-radius: 0px;
     background-color: #C5E6A6;
 }
 
 .reply-column{
+    padding: 20px;
+    margin-left: 20px;
     margin: 0px;
     border-radius: 0px;
     background-color: #baabba;
@@ -143,9 +194,14 @@ input[type=submit]:hover{
 
 .post-text{
     line-height: 1.5;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin-bottom: -20px;
+    text-align: justify;
+}
+
+.reply-text{
+    margin-top: -25px;
+    line-height: 1.5;
+    margin-bottom: -20px;
     text-align: justify;
 }
 
@@ -160,6 +216,24 @@ input[type=submit]:hover{
 
 .registration-column-1{
     background-color: #F7BFB4;
+}
+
+.user-page{
+    background-color: #F4A261;
+}
+
+.user-page-title{
+    margin-left: 20px;
+    line-height: 2;
+}
+
+.user-posts{
+    padding: 20px;
+    margin-top: -40px
+}
+
+.created-title-center{
+    align-items: center;
 }
 
 .category-column{
@@ -243,6 +317,17 @@ input[type=submit]:hover{
 }
 
 .comment{
+    margin-top: -20px;
+    width: 100%;
+    background-color: #f7bfb4;
+}
+
+.create-post{
+    width: 100%;
+    background-color: #f7bfb4;
+}
+
+.create-category{
     width: 100%;
     background-color: #f7bfb4;
 }
@@ -263,7 +348,81 @@ input[type=submit]:hover{
     text-align: justify;
 }
 
+.post-textarea{
+    margin-top: 0px;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
+    height: 300px;
+    resize: none;
+    border: dashed;
+    overflow: hidden;
+    background-color: #c0a3a3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.create-post-textarea{
+    margin-top: 20px;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
+    height: 300px;
+    resize: none;
+    border: dashed;
+    overflow: hidden;
+    background-color: #c0a3a3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+select{
+    border: 3px solid #C5E6A6;
+    color:#E9FAE3;
+    background-color: #8FAD88;
+    outline: none;
+    padding: 6px 10px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+select:focus{
+    border: 3px solid #555;
+}
+
+.select-categories-label{
+    margin-top: 20px;
+    margin-left: 3%
+}
+
+.select-categories-list{
+    margin-top: 10px;
+    margin-left: 3%;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+
+.post-textarea:focus{
+    border: dashed;
+    overflow: hidden;
+    outline: none;
+    font-size: 1.4;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .comment-textarea:focus{
+    border: dashed;
+    overflow: hidden;
+    outline: none;
+    font-size: 1.4;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.create-post-textarea:focus{
     border: dashed;
     overflow: hidden;
     outline: none;
@@ -275,18 +434,81 @@ input[type=submit]:hover{
     margin-left: 3%;
 }
 
+.create-post-title{
+    margin-left: 3%;
+}
+
+.create-post-input{
+    width: 70%
+}
+
+.category-inputs{
+    margin-top: 200px;
+    width: 70%
+}
+
+.error-container{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.category-wrap{
+    margin-left: 20px
+}
+
 .comment-send-button{
     margin: 3%;
     margin-top: -10px
 }
 
-
+.category-send-button{
+    align-items: right;
+}
 
 .likes{
     color: #3E92CC;
     display: flex;
     justify-content: right;
     align-items: right;
+    position: relative
+}
+
+.like-error{
+    position: relative;
+    font-size: smaller;
+    position: absolute;
+    bottom: 30px;
+    right: 1px;
+    border: 10px solid #F7BFB4;
+    background-color: #F7BFB4;
+   animation: likeAnimation 0s ease-in 3s forwards;
+   animation-fill-mode: forwards;
+}
+
+@keyframes likeAnimation {
+    to {
+        width: 0;
+        height: 0;
+        border: none;
+        overflow: hidden;
+    }
+}
+
+@-webkit-keyframes likeAnimation {
+    to {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        border: none
+    }
+}
+
+.liked {
+    color: #cd1c48;
+}
+
+.thumb {
+    display: flex;
 }
 
 /* needs to be fixed still*/
@@ -303,7 +525,7 @@ input[type=submit]:hover{
 
 @media screen and (max-width: 830px) and (min-width: 565px) {
     .category-row{
-        height: 60px;
+        height: 80px;
         display: grid;
         grid-template: auto / 5% 40% 13% 40%
     }
@@ -329,15 +551,15 @@ input[type=submit]:hover{
     }
 
     .category-row{
-        height: 60px;
+        height: 80px;
         display: grid;
-        grid-template: auto / 5% 60% 35%
+        grid-template: auto / 10% 55% 35%
     }
 
     .category-minirow{
         height: 20px;
         display: grid;
-        grid-template: auto / 5% 60% 35%
+        grid-template: auto / 10% 55% 35%
     }
 }
 
@@ -359,14 +581,18 @@ input[type=submit]:hover{
     }
     
     .category-row{
-        height: 60px;
+        height: 80px;
         display: grid;
-        grid-template: auto / auto auto
+        grid-template: auto / 20% 80%
     }
 
     .category-minirow{
         height: 20px;
         display: grid;
-        grid-template: auto / 5% 60% 35%
+        grid-template: auto / 20% 70% 10%
+    }
+
+    .tabbed {
+        padding-left: 2rem;
     }
 }

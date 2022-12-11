@@ -1,0 +1,28 @@
+{{template "header" .}}
+        <br><br>
+        <div id="path" class="path description">
+            <small><i class="bi bi-house-door"></i> <a href="/" id="path">HOME</a>
+                <i class="bi bi-arrow-right"></i> <a href="/new_post" id="path">NEW POST</a></small>
+        </div><br>
+        <div class="create-post">
+            <h2 class="comment-text"><br>Create a new post</h2>
+            <form method="POST" action="/new_post">
+                <label for="post-title" class="create-post-title">Title: </label>
+                <input type="text" id="title" name="title" class="create-post-input" maxlength="100"/>
+                <textarea id="content" name="content" class="create-post-textarea" maxlength="3000"></textarea>
+                <p>{{.ErrorMessage}}</p>
+                <div class="select-categories-label"><label for="multi-select">Category(ies):</label></div>
+                    <select name="categories" id="multi-select" multiple class="select-categories-list">
+                        {{range .Categories}}
+                            <option name="{{.CategoryName}}" value="{{.CategoryName}}">{{.CategoryName}}</option>
+                            {{end}}
+                    </select>
+                    <div class="comment-send-button"><input type="submit" value="SEND" /></div>
+                </div>
+            </form>
+        </div>
+    </div>
+ 
+</body>
+<script src="/js/multi.js"></script>
+</html>

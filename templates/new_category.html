@@ -1,0 +1,27 @@
+{{template "header" .}}
+        <br><br>
+        <div id="path" class="path description">
+            <small><i class="bi bi-house-door"></i> <a href="/" id="path">HOME</a>
+                <i class="bi bi-arrow-right"></i> <a href="new_category" id="path">NEW CATEGORY</a></small>
+        </div><br>
+        
+        <div class="create-category">
+            <div class="category-wrap">
+                <h2><br>Create a new category</h2>
+                 <form id="new-category" method="POST" action="/new_category">
+                <label for="category-name">Category Name: </label><input type="text" id="category-name" name="category-name" class="category-inputs" />
+                {{if not (eq .CategoryErrorMessage "")}}
+                        <span class="red">{{.CategoryErrorMessage}}</span>
+                    {{end}}
+                    <br><label for="category-description">Description: </label><input type="text" id="category-description" name="category-description" class="category-inputs" />
+                    {{if not (eq .DescriptionErrorMessage "")}}
+                        <span class="red">{{.DescriptionErrorMessage}}</span>
+                    {{end}}
+                    <div class="category-send-button"><input type="submit" value="SEND" /></div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

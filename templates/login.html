@@ -1,0 +1,13 @@
+{{define "login"}}
+<div class="login">
+    <div class="login-form">
+        <form action="/login" method="POST">
+            <label for="form-group">Login</label>
+            <div class="form-group">
+                <input type="text" name="uname" id="uname" placeholder="Username">
+                <input type="password" name="pwd" id="pwd" placeholder="Password">
+                <button type="submit">Login</button>
+                </div>
+        </form>
+</div>
+{{end}}
